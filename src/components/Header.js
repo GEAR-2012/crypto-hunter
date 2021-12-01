@@ -13,6 +13,8 @@ import {
 } from "@material-ui/core";
 
 import { CryptoState } from "../CryptoContext";
+import AuthModal from "./Authentication/AuthModal";
+import UserSidebar from "./Authentication/UserSidebar";
 
 const useStyles = makeStyles(() => ({
   title: {
@@ -29,7 +31,7 @@ const Header = () => {
 
   const navigate = useNavigate();
 
-  const { currency, setCurrency } = CryptoState();
+  const { currency, setCurrency, user } = CryptoState();
 
   const darkTheme = createTheme({
     palette: {
@@ -48,7 +50,6 @@ const Header = () => {
             <Typography onClick={() => navigate("/")} className={classes.title} variant="h6">
               Crypto Hunter
             </Typography>
-
             <Select
               variant="outlined"
               style={{
@@ -66,6 +67,7 @@ const Header = () => {
               <MenuItem value={"HUF"}>HUF</MenuItem>
               <MenuItem value={"INR"}>INR</MenuItem>
             </Select>
+            {user ? <UserSidebar /> : <AuthModal />}
           </Toolbar>
         </Container>
       </AppBar>
