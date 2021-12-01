@@ -73,6 +73,8 @@ const UserSidebar = () => {
 
   const { user, setAlert, watchlist, coins, symbol } = CryptoState();
 
+  console.log(coins, watchlist);
+
   const toggleDrawer = (anchor, open) => (event) => {
     if (event.type === "keydown" && (event.key === "Tab" || event.key === "Shift")) {
       return;
@@ -168,7 +170,7 @@ const UserSidebar = () => {
                           </span>
                         </div>
                       );
-                    }
+                    } else return <></>;
                   })}
                 </div>
               </div>
